@@ -8,3 +8,10 @@ test("Verigy All Books is visible", async ({page}) => {
     expect(isAllBooksVisible).toBe(true);
 });
 
+test("Verify Login button is visible", async ({page}) => {
+    await page.goto("http://localhost:3000/");
+    await page.waitForSelector('#site-header > nav');
+    const loginButton = await page.$("#guest > a:nth-child(1)");
+    const isLoginButtonVisible = await loginButton.isVisible();
+    expect(isLoginButtonVisible).toBe(true);
+})
